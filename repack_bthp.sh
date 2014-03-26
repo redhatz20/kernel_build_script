@@ -2,45 +2,44 @@
 now=$(date +"%m%d_%H%M")
 
 #Source
-ZIMAGE_A=~/kernel_dev/build_hut/kernel/aosp
-ZIMAGE_S=~/kernel_dev/build_hut/kernel/sense
-MODULE_A=~/kernel_dev/build_hut/kernel/aosp/
-MODULE_S=~/kernel_dev/build_hut/kernel/sense/
+ZIMAGE=~/kernel_dev/build_hut/kernel/bthp
+MODULE=~/kernel_dev/build_hut/kernel/bthp/
 
 #Repacking
-CM11=~/kernel_dev/build_hut/bootimg_repacker/cm11
-CM10_2=~/kernel_dev/build_hut/bootimg_repacker/cm10_2
-AICP=~/kernel_dev/build_hut/bootimg_repacker/aicp
-AICP43=~/kernel_dev/build_hut/bootimg_repacker/aicp43
-SENSE=~/kernel_dev/build_hut/bootimg_repacker/sense
-OMNIEXP=~/kernel_dev/build_hut/bootimg_repacker/omni-exp
+CM11=~/kernel_dev/final_hut/bootimg_repacker/cm11
+CM10_2=~/kernel_dev/final_hut/bootimg_repacker/cm10_2
+AICP=~/kernel_dev/final_hut/bootimg_repacker/aicp
+AICP43=~/kernel_dev/final_hut/bootimg_repacker/aicp43
+SENSE=~/kernel_dev/final_hut/bootimg_repacker/sense
+MAHDI=~/kernel_dev/final_hut/bootimg_repacker/mahdi
 
 #Packaging
-P_AOSP=~/kernel_dev/build_hut/release/aosp
-P_SENSE=~/kernel_dev/build_hut/release/sense
+PACKED=~/kernel_dev/final_hut/release
 
 #Out
-OUT=~/kernel_dev/build_hut/final/bthp/
+OUT=~/kernel_dev/final_hut/final/bthp/
 
 rm -f $CM11/kernel/zImage
 rm -f $CM10_2/kernel/zImage
 rm -f $AICP/kernel/zImage
 rm -f $AICP43/kernel/zImage
 rm -f $SENSE/kernel/zImage
-rm -f $OMNIEXP/kernel/zImage
+rm -f $MAHDI/kernel/zImage
 
-rm -R $P_AOSP/system/lib/modules
-rm -R $P_SENSE/system/lib/modules
+rm -R $PACKED/system/lib/modules
 
-cp -f $ZIMAGE_A/zImage $CM11/kernel/zImage
-cp -f $ZIMAGE_A/zImage $CM10_2/kernel/zImage
-cp -f $ZIMAGE_A/zImage $AICP/kernel/zImage
-cp -f $ZIMAGE_A/zImage $AICP43/kernel/zImage
-cp -f $ZIMAGE_A/zImage $SENSE/kernel/zImage
-cp -f $ZIMAGE_A/zImage $OMNIEXP/kernel/zImage
+cp -f $ZIMAGE/zImage $CM11/kernel/zImage
+cp -f $ZIMAGE/zImage $CM10_2/kernel/zImage
+cp -f $ZIMAGE/zImage $AICP/kernel/zImage
+cp -f $ZIMAGE/zImage $AICP43/kernel/zImage
+cp -f $ZIMAGE/zImage $SENSE/kernel/zImage
+cp -f $ZIMAGE/zImage $MAHDI/kernel/zImage
 wait
-cp -R $MODULE_A/modules $P_AOSP/system/lib
-cp -R $MODULE_S/modules $P_SENSE/system/lib
+cp -R $MODULE/modules $PACKED/system/lib
+wait
+
+cd $MAHDI
+. pack_boot.sh
 wait
 
 cd $CM11

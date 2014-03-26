@@ -6,18 +6,18 @@ ZIMAGE=~/kernel_dev/build_hut/kernel/intelliplug
 MODULE=~/kernel_dev/build_hut/kernel/intelliplug/
 
 #Repacking
-CM11=~/kernel_dev/build_hut/bootimg_repacker/cm11
-CM10_2=~/kernel_dev/build_hut/bootimg_repacker/cm10_2
-AICP=~/kernel_dev/build_hut/bootimg_repacker/aicp
-AICP43=~/kernel_dev/build_hut/bootimg_repacker/aicp43
-SENSE=~/kernel_dev/build_hut/bootimg_repacker/sense
-MAHDI=~/kernel_dev/build_hut/bootimg_repacker/mahdi
+CM11=~/kernel_dev/final_hut/bootimg_repacker/cm11
+CM10_2=~/kernel_dev/final_hut/bootimg_repacker/cm10_2
+AICP=~/kernel_dev/final_hut/bootimg_repacker/aicp
+AICP43=~/kernel_dev/final_hut/bootimg_repacker/aicp43
+SENSE=~/kernel_dev/final_hut/bootimg_repacker/sense
+MAHDI=~/kernel_dev/final_hut/bootimg_repacker/mahdi
 
 #Packaging
-PACKED=~/kernel_dev/build_hut/release
+PACKED=~/kernel_dev/final_hut/release
 
 #Out
-OUT=~/kernel_dev/build_hut/final/intelliplug/
+OUT=~/kernel_dev/final_hut/final/intelliplug/
 
 rm -f $CM11/kernel/zImage
 rm -f $CM10_2/kernel/zImage
@@ -26,7 +26,6 @@ rm -f $AICP43/kernel/zImage
 rm -f $SENSE/kernel/zImage
 rm -f $MAHDI/kernel/zImage
 
-rm -R $PACKED/system/lib/modules
 rm -R $PACKED/system/lib/modules
 
 cp -f $ZIMAGE/zImage $CM11/kernel/zImage
