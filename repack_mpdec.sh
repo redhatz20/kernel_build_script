@@ -45,43 +45,36 @@ wait
 cd $CM11
 . pack_boot.sh
 wait
-cp -f $CM11/out/boot.img $P_AOSP/cm11.img
+cp -f $CM11/out/boot.img $PACKED/cm11.img
 wait
 
 cd $CM10_2
 . pack_boot.sh
 wait
-cp -f $CM10_2/out/boot.img $P_AOSP/cm10_2.img
+cp -f $CM10_2/out/boot.img $PACKED/cm10_2.img
 wait
 
 cd $AICP
 . pack_boot.sh
 wait
-cp -f $AICP/out/boot.img $P_AOSP/aicp.img
+cp -f $AICP/out/boot.img $PACKED/aicp.img
 wait
 
 cd $AICP43
 . pack_boot.sh
 wait
-cp -f $AICP/out/boot.img $P_AOSP/aicp43.img
+cp -f $AICP/out/boot.img $PACKED/aicp43.img
 wait
 
 cd $SENSE
 . pack_boot.sh
 wait
-cp -f $SENSE/out/boot.img $P_SENSE/sense.img
-wait
-
-cd $OMNIEXP
-. pack_boot.sh
+cp -f $SENSE/out/boot.img $PACKED/sense.img
 wait
 
 #Zipping aosp
-cd $P_AOSP
-zip -r next_aosp_mpdec$(echo $now).zip *
+cd $PACKED
+zip -r next_mpdec$(echo $now).zip *
 mv *.zip $OUT
 wait
-#Zipping sense
-cd $P_SENSE
-zip -r next_sense_mpdec$(echo $now).zip *
-mv *.zip $OUT
+
